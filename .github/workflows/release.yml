@@ -1,0 +1,40 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create_release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Get current version
+        id: vars
+        run: |
+          version=$(grep -Eo '"version":\s*"[^"]+"' package.json | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')
+          echo "::set-output name=version::$version"
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.vars.outputs.version }}
+          release_name: Release v${{ steps.vars.outputs.version }}
+          body: |
+            ## Changes
+            - Automatic release creation from GitHub Actions.
+          draft: false
+          prerelease: false
