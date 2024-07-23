@@ -133,6 +133,17 @@ Use [Google Analytics Debugger Chrome Extension](https://chrome.google.com/webst
 
 [Han Lin Yap](https://github.com/codler)
 
+## Colaborators
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/vagnerleitte"><img src="https://avatars.githubusercontent.com/u/3122320?v=4&s=100" width="100px;" alt="Vagner Leitte"/><br /><sub><b>Vagner Leitte</b></sub></a><br /></td>
+    </tr>
+  </tbody>
+</table>
+
+
 ## License
 
 MIT
